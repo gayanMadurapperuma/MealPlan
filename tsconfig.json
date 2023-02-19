@@ -7,6 +7,7 @@
     ],
     "declaration": true,
     "strict": true,
+    "esModuleInterop": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "noImplicitThis": true,
@@ -21,7 +22,20 @@
     "strictPropertyInitialization": false,
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "paths": {
+      "@adapters/*": ["./lib/stateless/src/adapters/*"],
+      "@config/*": ["../lib/stateless/src/config/*"],
+      "@domain/*": ["./lib/stateless/src/domain/*"],
+      "@entity/*": ["./lib/stateless/src/entity/*"],
+      "@errors/*": ["./lib/stateless/src/errors/*"],
+      "@repositories/*": ["./lib/stateless/src/repositories/*"],
+      "@schemas/*": ["./lib/stateless/src/schemas/*"],
+      "@models/*": ["./lib/stateless/src/models/*"],
+      "@use-cases/*": ["./lib/stateless/src/use-cases/*"],
+      "@packages/*": ["./lib/packages/*"],
+      "@events/*": ["./lib/stateless/src/events/*"]
+    }
   },
   "exclude": [
     "node_modules",
