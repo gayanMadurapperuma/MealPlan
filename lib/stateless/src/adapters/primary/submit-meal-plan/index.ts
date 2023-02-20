@@ -3,7 +3,7 @@ import { DynamoDBClient, PutItemCommand } from '@aws-sdk/client-dynamodb'
 import { marshall } from '@aws-sdk/util-dynamodb';
 import { v4 } from 'uuid';
 import moment from 'moment';
-import { mealPlanSubmitProps } from '@models/types';
+import { mealPlanProps } from '@models/types';
 
 const client = new DynamoDBClient({ region: 'us-west-2' });
 

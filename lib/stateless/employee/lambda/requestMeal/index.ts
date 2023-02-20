@@ -22,8 +22,8 @@ exports.handler = async ({ body }: APIGatewayProxyEvent): Promise<APIGatewayProx
             TableName: process.env.table,
             Item: marshall({
                 id: v4(),
-                date: moment().format('YYYY-MM-DD'),
-                time: moment().format('HH:mm:SS'),
+                mealDate: moment().format('YYYY-MM-DD'),
+                mealtime: moment().format('HH:mm:SS'),
                 ...JSON.parse(body)
             })
         });

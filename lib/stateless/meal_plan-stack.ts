@@ -50,10 +50,10 @@ export class MealPlanStack extends Stack {
       notificationService: props.snsService
     })
 
-    // new EmployeeConstruct(this, `employeeConstruct`, {
-    //   table: props.table,
-    //   gateway: employeeAPIResource,
-    // });
+    new EmployeeConstruct(this, `employeeConstruct`, {
+      table: props.table,
+      gateway: employeeAPIResource,
+    });
 
     // const clenLambda = new LambdaFunction(this, `cleanInitialFunc`, {
     //   functionName: `cleanInitialFunc`,
@@ -67,22 +67,22 @@ export class MealPlanStack extends Stack {
     //   }
     // });
 
-    const nodeLambda = new aws_lambda_nodejs.NodejsFunction(this, `nodeClenInitial`, {
-      runtime: aws_lambda.Runtime.NODEJS_16_X,
-      entry: path.join(__dirname, './src/adapters/primary/submit-meal-plan/index.ts'),
-      handler: 'submitMealPlan',
-      bundling: {
-        minify: true,
-        nodeModules: ['uuid', 'moment', '@aws-sdk/client-dynamodb', '@aws-sdk/util-dynamodb'],
-        externalModules: ['aws-sdk']
-      },
-      environment: {
-        table: props.table.tableName
-      }
-    })
+    // const nodeLambda = new aws_lambda_nodejs.NodejsFunction(this, `nodeClenInitial`, {
+    //   runtime: aws_lambda.Runtime.NODEJS_16_X,
+    //   entry: path.join(__dirname, './src/adapters/primary/submit-meal-plan/index.ts'),
+    //   handler: 'submitMealPlan',
+    //   bundling: {
+    //     minify: true,
+    //     nodeModules: ['uuid', 'moment', '@aws-sdk/client-dynamodb', '@aws-sdk/util-dynamodb'],
+    //     externalModules: ['aws-sdk']
+    //   },
+    //   environment: {
+    //     table: props.table.tableName
+    //   }
+    // })
 
-    props.table.grantWriteData(nodeLambda);
-    employeeAPIResource.addMethod('POST', new aws_apigateway.LambdaIntegration(nodeLambda));
+    // props.table.grantWriteData(nodeLambda);
+    // employeeAPIResource.addMethod('POST', new aws_apigateway.LambdaIntegration(nodeLambda));
 
     // The code that defines your stack goes here
 

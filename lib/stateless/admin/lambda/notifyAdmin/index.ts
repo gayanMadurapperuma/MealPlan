@@ -12,6 +12,12 @@ exports.handler = async (e: DynamoDBStreamEvent) => {
         }
 
         console.log('===> EVENT', JSON.stringify(e));
+
+        const { Records } = e;
+        const items = Records.map((o) => {
+            const { dynamodb } = o;
+        })
+
         const commond = new PublishCommand({
             TopicArn: process.env.topicArn,
             Subject: `New Meal from Employee`,
